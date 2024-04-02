@@ -117,15 +117,17 @@ startRound();
 console.clear();
 
 //Part 2: Player action
-playerBarracks.forEach((peon)=>{ //We want to iterate over the player's barracks to initiate the action phase 
+ const playerAction = ()=>{
+    playerBarracks.forEach((peon)=>{ //We want to iterate over the player's barracks to initiate the action phase 
     if(peon.job === "repair"){ //With the forEach() method we can target the value of the object elements and identify the value to match our conditional statements
         playerHealth += 1;
         console.log(`Nice defensive move! You have repaired yourself by 1 point`);
     }else if(peon.job === "attack"){
         computerHealth -= 1;
         console.log(`Nice move! you have inflicted damage and decreased the Fedual Lord's health by 1 point`);
-    }
-})
+        }
+    })
+}
 
 //Part 3: 
 const computerAction = ()=>{
@@ -139,7 +141,39 @@ const computerAction = ()=>{
     }
 }
 computerAction();
-console.log(`Current Player Health: ${playerHealth} - Current Feudal Lord Health: ${computerHealth}`);
+// console.log(`Current Player Health: ${playerHealth} - Current Feudal Lord Health: ${computerHealth}`);
+
+//Part 4: Evaluating state of the game
+// let gameState = ()=>{
+//     if(computerHealth <= 0){
+//         console.log(`Congratulations, you've defeated the Feudal Lord and liberated your clan from his tyranny!`);
+//     }else if(playerHealth <= 0){
+//         console.log(`Oh no! The Feudal Lord has vanquished your clan and has taken absolute power over the nation - GAME OVER...`);
+//     }else if(computerHealth <= 0 && playerHealth <= 0){
+//         console.log(`It's a tie! Both you and the Feudal Lord are in a stalemate, better luck next time...`);
+//     }else if(computerHealth > 0 && playerHealth > 0){
+//         console.log(`It's not over yet, time for the next round!`);
+//         startRound();
+//         playerAction();
+//         computerAction();
+//     }
+// }
+// gameState(); ---> We could not make the game loop from beginning by creating a function with the if...else statements evaluating the game state, so we checked Chat GPT and chose to use a while...loop instead
+
+//We chose to use a while...loop to ensure that if end game status had both computer and player health above 0 - the game would start from beginning
+while(computerHealth > 0 && playerHealth > 0){  
+    console.log(`Current Player Health: ${playerHealth}  -  Current Feudal Lord Health: ${computerHealth}`);
+    startRound();
+    playerAction();
+    computerAction();
+}
+if(computerHealth <= 0){
+    console.log(`Congratulations, you've defeated the Feudal Lord and liberated your clan from his tyranny!`);
+}else if(playerHealth <= 0){
+    console.log(`Oh no! The Feudal Lord has vanquished your clan and has taken absolute power over the nation - GAME OVER...`);
+}else if(computerHealth <= 0 && playerHealth <= 0){
+    console.log(`It's a tie! Both you and the Feudal Lord are in a stalemate, better luck next time...`);
+}
 
 
 
