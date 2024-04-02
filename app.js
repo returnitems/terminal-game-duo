@@ -32,6 +32,17 @@ if(intro === "Y"){
         console.log(`Great, let's begin!`);
     }
 }
+//Pre-Game: Player creates INITIAL peon + list of variables we want in global scope (for future reference in code blocks and functions)
+const playerBarracks = [];
+let playerHealth = 10;
+let computerHealth = 10;
+let computerNumber = Math.floor(Math.random() * 5) + 1; //We chose to mulitply by 5 and then add 1 to ensure that we NEVER get 0 (since coputer needs to choose 1-5) and 5 is inclusive 
+const computerOptions = ["attack", "repair"];
+//let computerAction = computerOptions[Math.floor(Math.random() * 2)]; //We will use later to gnerate the action computer will take
+
+
+
+
 
 
 
