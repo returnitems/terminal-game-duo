@@ -53,39 +53,6 @@ let initialPeon = prompt(`Attention! Before the game starts with round 1, you ne
 playerBarracks.push({name: initialPeon, job: "nothing"});
 console.log(`Congrats! You've created your first peon and this is the current status of your barracks:`, playerBarracks);
 
-//Round Start: Steps to carry out an entire round of gameplay - (Part 1)
-// let round = prompt(`Round Start! Would you like to CREATE or SELECT a peon? - Please type (create) or (select): `);
-// console.clear();
-// while(round !== "create" && round !== "select"){
-//     round = prompt(`Please type either (create) or (select): `);
-// }
-// if(round === "create"){
-//     round = prompt(`Give your peon a name: `);
-//     playerBarracks.push({name: round, job: "nothing"}); //If player chose to create a peon - we added to his barracks with correct property values
-// }else if(round === "select"){
-//     console.log(`These are your current Barracks:`, playerBarracks);
-//     round = prompt(`Please select a peon from your Barracks - Type peon name: `);
-//     console.clear();
-//     playerBarracks.forEach((peon)=>{
-//         console.log(`Here is the current status of your Barracks`, playerBarracks); //We chose to display the status of Barracks on this line, so that play can see available peons (also, to only show Barracks once even after multiple incorrect inputs)
-//         while(round !== peon.name){
-//             round = prompt(`Please type a correct peon name: `);
-//         }
-//         if(peon.name === round){
-//             console.log(`You have chosen ${peon.name}`); 
-//             round = prompt(`What action would you like ${peon.name} to perform? - Please type (attack) or (repair): `);
-//             while(round !== "attack" && round !== "repair"){
-//                 round = prompt(`Please type either (attack) or (repair): `);
-//             }
-//             if(round === "attack"){
-//                 peon.job = "attack";
-//             }else if(round === "repair"){
-//                 peon.job = "repair";
-//             }
-//         }
-//     })
-// }
-// console.log(playerBarracks);
 
 //We chose to create a function that represents ONE player round (before action)
 const startRound = ()=>{
@@ -151,23 +118,6 @@ const computerAction = ()=>{
 }
 computerAction();
 // console.log(`Current Player Health: ${playerHealth} - Current Feudal Lord Health: ${computerHealth}`);
-
-//Part 4: Evaluating state of the game
-// let gameState = ()=>{
-//     if(computerHealth <= 0){
-//         console.log(`Congratulations, you've defeated the Feudal Lord and liberated your clan from his tyranny!`);
-//     }else if(playerHealth <= 0){
-//         console.log(`Oh no! The Feudal Lord has vanquished your clan and has taken absolute power over the nation - GAME OVER...`);
-//     }else if(computerHealth <= 0 && playerHealth <= 0){
-//         console.log(`It's a tie! Both you and the Feudal Lord are in a stalemate, better luck next time...`);
-//     }else if(computerHealth > 0 && playerHealth > 0){
-//         console.log(`It's not over yet, time for the next round!`);
-//         startRound();
-//         playerAction();
-//         computerAction();
-//     }
-// }
-// gameState(); ---> We could not make the game loop from beginning by creating a function with the if...else statements evaluating the game state, so we checked Chat GPT and chose to use a while...loop instead
 
 //We chose to use a while...loop to ensure that if end game status had both computer and player health above 0 - the game would start from beginning
 while(computerHealth > 0 && playerHealth > 0){  
