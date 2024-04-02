@@ -32,6 +32,10 @@ let randomJob = jobOptions[randomIndex];```, and the other was: ```const compute
 - Created forEach callback functions for "attack" or "repair" player actions.
 - Using the forEach method made it very easy to iterate over the player barracks to initiate the action phase.
 
+6. Computer actions/turn
+
+- For the computers actions we used the previously defined ```computerNumber``` and ```computerOptions``` variables which selected a random number from 1-5 and 0-1, respectively. Using those numbers, we created if..else if statements for whether the computer attacks or repairs and by how many hit points.
+
 
 ### Bugs
 
