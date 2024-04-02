@@ -1,34 +1,43 @@
 const prompt = require('prompt-sync')();
 //Game Introduction
-console.log(`********************
-Welcome to Castle Battle! 
-********************`); //Add stars later
+console.log(`******************************
+  Welcome to Castle Battle! 
+******************************`); //Add stars later
 console.log(``); //We want space between text - for aesthetic visual purposes
 //We want the player to have the option of reading the lore and whether they want to read the instructions or not
-let intro = prompt(`Would you like to read the lore? - Type (Y) for yes (N) for no: `);
-while(intro !== "Y" && intro !== "N"){
-    intro = prompt(`Please type either (Y) or (N): `);
+let intro = prompt(`Would you like to read the lore? - Type (y) for yes (n) for no: `);
+while(intro !== "y" && intro !== "n"){
+    intro = prompt(`Please type either (y) or (n): `);
 }
-if(intro === "Y"){
-    console.log(`lore goes here`); //Revisit to write lore
-    intro = prompt(`Would you like to read the instructions? - Type (Y) for yes (N) for no: `);
+if(intro === "y"){
+    console.clear();
+    console.log(`You are a proud Samurai in Feudal Japan and you're leading a rebellion against the tyrannical Feudal Lord. It's time the two factions faced each other in combat!`); //Revisit to write lore
+    intro = prompt(`Would you like to read the instructions? - Type (y) for yes (n) for no: `);
     //We want the user to ONLY type the requested input
-    while(intro !== "Y" && intro !== "N"){
-        intro = prompt(`Please type either (Y) or (N): `);
+    while(intro !== "y" && intro !== "n"){
+        intro = prompt(`Please type either (y) or (n): `);
     }
-    if(intro === "Y"){
-        console.log(`instructions go here`); //Revisit to write instructions
-    }else if(intro === "N"){
+    if(intro === "y"){
+        console.log(`1.Choose either to CREATE or SELECT a peon
+        2.If SELECT peon: a.Select by name, b.assign job (attack or repair)
+        3.If CREATE peon: Assign peon name
+        4.Game Over if health is 0 - or - Continue playing until health is 0`); //Revisit to write instructions
+    }else if(intro === "n"){
+        console.clear();
         console.log(`Great, let's begin!`);
     }
-}else if(intro === "N"){
-    intro = prompt(`Would you like to read the instructions? - Type (Y) for yes (N) for no: `);
-    while(intro !== "Y" && intro !== "N"){
-        intro = prompt(`Please type either (Y) or (N): `);
+}else if(intro === "n"){
+    intro = prompt(`Would you like to read the instructions? - Type (y) for yes (n) for no: `);
+    while(intro !== "y" && intro !== "n"){
+        intro = prompt(`Please type either (y) or (n): `);
     }
-    if(intro === "Y"){
-        console.log(`instructions go here`); //Revisit to write instructions
-    }else if(intro === "N"){
+    if(intro === "y"){
+        console.log(`1.Choose either to CREATE or SELECT a peon
+        2.If SELECT peon: a.Select by name, b.assign job (attack or repair)
+        3.If CREATE peon: Assign peon name
+        4.Game Over if health is 0 - or - Continue playing until health is 0`); //Revisit to write instructions
+    }else if(intro === "n"){
+        console.clear();
         console.log(`Great, let's begin!`);
     }
 }
@@ -170,13 +179,10 @@ while(computerHealth > 0 && playerHealth > 0){
 if(computerHealth <= 0){
     console.log(`Congratulations, you've defeated the Feudal Lord and liberated your clan from his tyranny!`);
 }else if(playerHealth <= 0){
-    console.log(`Oh no! The Feudal Lord has vanquished your clan and has taken absolute power over the nation - GAME OVER...`);
+    console.log(`You have been slain! The Feudal Lord has vanquished your clan and has taken absolute power over the nation - GAME OVER...`);
 }else if(computerHealth <= 0 && playerHealth <= 0){
     console.log(`It's a tie! Both you and the Feudal Lord are in a stalemate, better luck next time...`);
 }
-
-
-
 
 
 
