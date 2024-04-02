@@ -78,7 +78,7 @@ console.log(`Congrats! You've created your first peon and this is the current st
 // }
 // console.log(playerBarracks);
 
-//We chose to create a function that represents ONE player round
+//We chose to create a function that represents ONE player round (before action)
 const startRound = ()=>{
     let round = prompt(`Round Start! Would you like to CREATE or SELECT a peon? - Please type (create) or (select): `);
 console.clear();
@@ -114,6 +114,22 @@ if(round === "create"){
 console.log(playerBarracks);
 }
 startRound();
+
+//Part 2: Player action
+playerBarracks.forEach((peon)=>{ //We want to iterate over the player's barracks to initiate the action phase 
+    if(peon.job === "repair"){ //With the forEach() method we can target the value of the object elements and identify the value to match our conditional statements
+        playerHealth += 1;
+        console.log(`Nice defensive move! You have repaired yourself by 1 point`);
+    }else if(peon.job === "attack"){
+        computerHealth -= 1;
+        console.log(`Nice move! you have inflicted damage and decreased the Fedual Lord's health by 1 point`);
+    }
+})
+
+
+
+
+// console.log(playerHealth, computerHealth);
 
 
 
