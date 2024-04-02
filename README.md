@@ -27,6 +27,11 @@ let randomJob = jobOptions[randomIndex];```, and the other was: ```const compute
 - Job is then set to either "attack" or "repair" depending on what the player types.
 - We took the flow of the round and entered it in a function giving us the ability to make multiple functions.
 
+5. Player actions
+
+- Created forEach callback functions for "attack" or "repair" player actions.
+- Using the forEach method made it very easy to iterate over the player barracks to initiate the action phase.
+
 
 ### Bugs
 
