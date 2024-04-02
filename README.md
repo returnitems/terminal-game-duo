@@ -1,5 +1,5 @@
 # Terminal Game based on Castle Battle
-### By Chris Jimenez and Umang Diwan
+### Coded by Chris Jimenez, Documented by Umang Diwan
 
 #### 1. Introduction to the game
 
@@ -36,7 +36,65 @@ let randomJob = jobOptions[randomIndex];```, and the other was: ```const compute
 
 - For the computers actions we used the previously defined ```computerNumber``` and ```computerOptions``` variables which selected a random number from 1-5 and 0-1, respectively. Using those numbers, we created if..else if statements for whether the computer attacks or repairs and by how many hit points.
 
+#### 7. Game evaluatiion
+
+- For the game evaluation we created a function called ```gameState``` with ```if...else if``` which check for computer or player health.
+- For when it is a tie we used the logical "and" ```&&```.
+- This created multiple game breaking bugs because, as we found out later, the conditionals were not letting us properly iterate through the game loop. 
+
 
 ### Bugs
 
-- While creating the introduction which gives players the option to read the instructions or the lore, we forgot to add the while loop which prevents random inputs to progress the code.
+1. While creating the introduction which gives players the option to read the instructions or the lore, we forgot to add the while loop which prevents random inputs to progress the code.
+2. We were receiving multiple game breaking bugs which seemed to happen at random points. First bug was discovered when the player creates 3 peons.
+- We discovered that our function of ```gameState``` was breaking the code when we prompted chatGPT's help. This was the code we received from chatGPT which ultimately helped us format our code properly: 
+```
+// Function to simulate player's turn
+function playerTurn() {
+    // Code for player's turn
+}
+
+// Function to simulate computer's turn
+function computerTurn() {
+    // Code for computer's turn
+}
+
+// Function to check if the game is over
+function isGameOver(playerHealth, computerHealth) {
+    return playerHealth <= 0 || computerHealth <= 0;
+}
+
+// Main game loop
+var playerHealth = 100;
+var computerHealth = 100;
+
+while (!isGameOver(playerHealth, computerHealth)) {
+    // Player's turn
+    playerTurn();
+    
+    // Check if the game is over after player's turn
+    if (isGameOver(playerHealth, computerHealth)) {
+        break; // Exit the loop if the game is over
+    }
+    
+    // Computer's turn
+    computerTurn();
+    
+    // Check if the game is over after computer's turn
+    if (isGameOver(playerHealth, computerHealth)) {
+        break; // Exit the loop if the game is over
+    }
+}
+
+// Determine the winner
+if (playerHealth <= 0) {
+    console.log("Computer wins!");
+} else if (computerHealth <= 0) {
+    console.log("Player wins!");
+} else {
+    console.log("It's a tie!");
+}
+``` 
+- We then decided to create a while loop with if...else if nested in it which would check for zero health. This did not work.
+- Then we did what chatGPT originally suggested and moved the if statements outside of the while loop and that made all the difference!
+3. Another game breaking code occured when we select a player peon and try to select "attack" or "repair". What we instead received was that we did not enter the peon name correctly even though the spellings were correct. 
